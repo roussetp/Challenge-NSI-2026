@@ -1,0 +1,245 @@
+<!--20/20 Excellent travail-->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Les Biomes dans Minecraft</title>
+  <style>
+    body {
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      background: linear-gradient(135deg, #ffb6e6, #d8b4ff);
+      margin: 0;
+      padding: 0;
+    }
+
+    
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      background: linear-gradient(90deg, #ff8fdc, #c084fc);
+      padding: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    nav a {
+      text-decoration: none;
+      background: linear-gradient(135deg, #ff6ec7, #a855f7);
+      color: white;
+      padding: 10px 22px;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      transform: scale(1.08);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+
+    h1 {
+      text-align: center;
+      color: white;
+      margin-top: 25px;
+      font-size: 36px;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    h2 {
+      color: #a855f7;
+      text-align: center;
+    }
+
+
+    .explication {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      padding: 25px;
+      margin: 30px auto;
+      width: 85%;
+      max-width: 900px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+
+    .question {
+      background: #ffffff;
+      border-left: 6px solid #c084fc;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 8px;
+      transition: 0.2s;
+    }
+
+    .question:hover {
+      background: #faf5ff;
+    }
+
+
+    button {
+      display: block;
+      margin: 25px auto;
+      padding: 14px 24px;
+      font-size: 16px;
+      font-weight: bold;
+      background: linear-gradient(135deg, #ff6ec7, #a855f7);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    }
+
+
+    #resultat {
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+      margin-bottom: 40px;
+      text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
+    }
+
+    #quiz {
+      width: 85%;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-left: 600px;
+      margin-right: auto;
+      /* centrage */
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <img src="title.jpg" alt="Minecraft" width="50%">
+  </header>
+  <div class="conteneur-principal">
+    <div class="contenu">
+      <nav>
+        <a href="../Robic/Projet web.html">Modes de jeu</a>
+        <a href="../Naranin/carft.html">Les crafts</a>
+        <a href="../Bikikre/minecraft.html">Page d'accueil</a>
+      </nav>
+
+      <h1>Les biomes dans Minecraft 🌍</h1>
+
+      <div class="explication">
+        <h2>Qu’est-ce qu’un biome ?</h2>
+        <p>
+          Dans Minecraft, un <strong>biome</strong> est une région du monde avec des caractéristiques uniques comme
+          le climat, le terrain, les plantes et les animaux qu’on y trouve. Chaque type de biome a son propre
+          paysage et influence ce que tu peux y rencontrer:
+        </p>
+
+        <h2>Quelques biomes importants</h2>
+
+        <p><strong>🌳 Forêt :</strong> zones avec beaucoup d’arbres et de ressources, avec des animaux comme les loups.
+          :
+        </p>
+        <p><strong>🏜️ Désert :</strong> biome sec composé surtout de sable, cactus et parfois avec des temples. :</p>
+        <p><strong>🌊 Océan :</strong> grandes étendues d’eau avec poissons, dauphins et parfois des monuments. :</p>
+        <p><strong>🍄 Îles champignons :</strong> biome rare où les monstres hostiles n’apparaissent généralement pas. :
+        </p>
+        <p>Les biomes déterminent aussi quels animaux apparaissent dans une zone. Par exemple, on trouve souvent des
+          moutons,
+          des vaches et des cochons dans les plaines.</p>
+        <p>Dans certains biomes froids, comme les plaines enneigées, le sol peut être couvert de neige et les rivières
+          peuvent parfois geler.</p>
+        <p>Certains biomes contiennent des structures naturelles ou des bâtiments générés automatiquement, comme les
+          temples
+          du désert ou les villages.</p>
+        <p>Explorer différents biomes permet aux joueurs de trouver de nouvelles ressources et de découvrir des paysages
+          variés.</p>
+        <p>Les joueurs peuvent aussi choisir certains biomes pour construire leur base, selon les ressources disponibles
+          et
+          le paysage.</p>
+        <p>Grâce aux biomes, chaque monde de Minecraft est unique et les joueurs peuvent vivre des aventures différentes
+          à
+          chaque nouvelle partie.</p>
+
+      </div>
+
+      <h2>Quiz sur les biomes 🧠</h2>
+
+      <form id="quiz">
+
+        <div class="question">
+          <p>1. Quel biome est principalement plat et couvert d’herbe ?</p>
+          <label><input type="radio" name="q1" value="1"> Plaines</label><br>
+          <label><input type="radio" name="q1" value="0"> Océan</label><br>
+          <label><input type="radio" name="q1" value="0"> Taïga</label><br>
+        </div>
+
+        <div class="question">
+          <p>2. Quel biome est chaud et sec avec beaucoup de sable ?</p>
+          <label><input type="radio" name="q2" value="0"> Forêt</label><br>
+          <label><input type="radio" name="q2" value="1"> Désert</label><br>
+          <label><input type="radio" name="q2" value="0"> Jungle</label><br>
+        </div>
+
+        <div class="question">
+          <p>3. Où trouve-t-on souvent des poissons, des coraux et des dauphins ?</p>
+          <label><input type="radio" name="q3" value="1"> Océan</label><br>
+          <label><input type="radio" name="q3" value="0"> Savane</label><br>
+          <label><input type="radio" name="q3" value="0"> Marais</label><br>
+        </div>
+
+        <div class="question">
+          <p>4. Quel biome est très rare et ne génère généralement pas de monstres hostiles ?</p>
+          <label><input type="radio" name="q4" value="0"> Taïga</label><br>
+          <label><input type="radio" name="q4" value="1"> Îles champignons</label><br>
+          <label><input type="radio" name="q4" value="0"> Plaines enneigées</label><br>
+        </div>
+
+        <div class="question">
+          <p>5. Quel biome est souvent rempli d’arbres et d’animaux comme des loups ?</p>
+          <label><input type="radio" name="q5" value="1"> Forêt</label><br>
+          <label><input type="radio" name="q5" value="0"> Désert</label><br>
+          <label><input type="radio" name="q5" value="0"> Océan</label><br>
+        </div>
+        <button type="button" onclick="corriger()">Valider le questionnaire</button>
+      </form>
+
+      <p id="resultat"></p>
+
+      <script>
+        function corriger() {
+          let score = 0;
+
+          let q1 = document.querySelector('input[name="q1"]:checked');
+          let q2 = document.querySelector('input[name="q2"]:checked');
+          let q3 = document.querySelector('input[name="q3"]:checked');
+          let q4 = document.querySelector('input[name="q4"]:checked');
+          let q5 = document.querySelector('input[name="q5"]:checked');
+
+          if (!q1 || !q2 || !q3 || !q4 || !q5) {
+            alert("Merci de répondre à toutes les questions !");
+            return;
+          }
+
+          score += parseInt(q1.value);
+          score += parseInt(q2.value);
+          score += parseInt(q3.value);
+          score += parseInt(q4.value);
+          score += parseInt(q5.value);
+
+          document.getElementById("resultat").textContent =
+            "Ton score est de " + score + " / 5";
+        }
+      </script>
+
+</body>
+
+</html>

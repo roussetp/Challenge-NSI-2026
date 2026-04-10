@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Guide interactif – Nayan</title>
+
+    <!-- Leaflet CSS -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+
+    <style>
+        /* Corps */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Navigation stylisée */
+        nav {
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 10px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            color: #6a0dad; /* violet */
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0 20px;
+            font-size: 16px;
+            padding: 6px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #eae6fa;
+            color: #9400d3;
+        }
+
+        /* Header */
+        h1 {
+            text-align: center;
+            padding: 15px;
+            background-color: #ffffff;
+            color: rgb(255, 0, 0);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            margin: 0;
+        }
+
+        /* Carte */
+        #map {
+            height: 90vh;
+            width: 100%;
+        }
+
+        /* Popups Leaflet */
+        .popup-content {
+            border-radius: 10px;
+            padding: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            background-color: #ffffff;
+        }
+
+        .popup-content h3 {
+            margin: 5px 0;
+            color: #6a0dad;
+        }
+
+        .popup-content img {
+            width: 100%;
+            border-radius: 8px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../JF/présentation.html">Géographie</a>
+        <a href="../ROUET/geoguesser sur la GP.html">Geoguesser sur la Guadeloupe</a>
+        <a href="../Noah/Quiz sur la Guadeloupe.html">Quiz sur la Guadeloupe</a>
+        <a href="../MARTIAL/jeu interactif.html">jeu interactif</a>
+    </nav>
+
+    <h1>Guide interactif – Guadeloupe</h1>
+
+    <div id="map"></div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        // Initialisation de la carte
+        const map = L.map('map').setView([16.265, -61.551], 9);
+
+        // Fond de carte
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap'
+        }).addTo(map);
+
+        // Données des lieux
+        const lieux = [
+            {
+                nom: "Pointe-à-Pitre",
+                coords: [16.241, -61.536],
+                description: "Centre économique et culturel de la Guadeloupe.",
+                activites: "Shopping, marchés, musées",
+                image: "pap.jpg"
+            },
+            {
+                nom: "Basse-Terre",
+                coords: [15.998, -61.732],
+                description: "Capitale administrative entourée de nature.",
+                activites: "Randonnée, cascades",
+                image: "Basse-Terre.jpg"
+            },
+            {
+                nom: "La Soufrière",
+                coords: [16.044, -61.666],
+                description: "Volcan actif et point culminant de l’île.",
+                activites: "Randonnée, panorama",
+                image: "la Soufrière.jpg"
+            },
+            {
+                nom: "Les Saintes",
+                coords: [15.864, -61.585],
+                description: "Archipel réputé pour sa baie magnifique.",
+                activites: "Plongée, plage",
+                image: "Les Saintes.jpg"
+            },
+            {
+                nom: "Marie-Galante",
+                coords: [15.905, -61.278],
+                description: "Véritable joyaux de Grande-Terre.",
+                activites: "Vue magnifique, Sorbet",
+                image: "Marie-Galante.jpg"
+            }
+        ];
+
+        // Ajout des points cliquables
+        lieux.forEach(lieu => {
+            L.marker(lieu.coords).addTo(map)
+                .bindPopup(`
+                    <div class="popup-content">
+                        <h3>${lieu.nom}</h3>
+                        <p>${lieu.description}</p>
+                        <strong>Activités :</strong> ${lieu.activites}
+                        <img src="${lieu.image}" alt="${lieu.nom}">
+                    </div>
+                `);
+        });
+    </script>
+</body>
+</html>

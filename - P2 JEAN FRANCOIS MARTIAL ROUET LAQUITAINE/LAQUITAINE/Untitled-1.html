@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz sur la Guadeloupe</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+
+
+
+    <style>
+        /* Fond d'écran */
+        body {
+            background-image: url('Plage.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Conteneur du quiz */
+        .quiz {
+            background-color: rgba(0, 0, 0, 0.6);
+            width: 60%;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .question {
+            margin-bottom: 15px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #00c853;
+            border: none;
+            border-radius: 5px;
+            color: white;
+        }
+
+        button:hover {
+            background-color: #009624;
+        }
+
+        #resultat {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="quiz">
+    <h1>Quiz sur la Guadeloupe </h1>
+
+    <div class="question">
+        <p>1. Quelle langue parle-t-on en plus du français  en Guadeloupe ?</p>
+        <input type="text" id="q1">
+    </div>
+
+    <div class="question">
+        <p>2. Combien d’îles composent la Guadeloupe ?</p>
+        <input type="number" id="q2">
+    </div>
+
+    <div class="question">
+        <p>3. Quel volcan se trouve en Guadeloupe ?</p>
+        <input type="text" id="q3">
+    </div>
+
+    <div class="question">
+        <p>4. Plat traditionnel de la Guadeloupe ?</p>
+        <input type="text" id="q4">
+    </div>
+
+    <div class= "question">
+        <p>5. La Guadeloupe se situe dans quel océan ?</p>
+        <input type="text" id="q5">
+    </div>
+
+    <div class="question">
+        <p>6. De quelle couleur est le sable de certaines plages volcaniques ?</p>
+        <input type="text" id="q6">
+    </div>
+
+    <div class="question">
+        <p>7.Comment s’appelle le sandwich guadeloupéen ?</p>
+        <input type="text" id="q7">
+    </div>
+    
+    <div class="question">
+        <p>8.Quel est le nom local des galettes de manioc ? </p>
+        <input type="text" id="q8">
+    </div>
+
+    <button onclick="verifier()">Valider</button>
+
+    <div id="resultat"></div>
+</div>
+
+<script>
+    function verifier() {
+        let score = 0;
+
+        let q1 = document.getElementById("q1").value.toLowerCase();
+        let q2 = document.getElementById("q2").value;
+        let q3 = document.getElementById("q3").value.toLowerCase();
+        let q4 = document.getElementById("q4").value.toLowerCase();
+        let q5 = document.getElementById("q5").value.toLowerCase();
+        let q6 = document.getElementById("q6").value.toLowerCase();
+        let q7 = document.getElementById("q7").value.toLowerCase();
+        let q8 = document.getElementById("q8").value.toLowerCase();
+
+        if (q1 === "créole") score++;
+        if (q2 == 6) score++;
+        if (q3.includes("soufrière")) score++;
+        if (q4.includes("colombo") || q4.includes("accras")  ) score++;
+        if (q5.includes("océan Atlantique")) score++;
+        if (q6.includes("noir")) score ++;
+        if (q7.includes("bokit")) score ++;
+        if (q8.includes("kassav")) score++;
+
+        document.getElementById("resultat").innerHTML =
+            "Votre score est de " + score + " / 8";
+    }
+</script>
+
+</body>
+</html>

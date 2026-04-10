@@ -1,0 +1,305 @@
+<!--18/20 Très bons résultats-->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoGuessr-like Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fafafa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        /* Ajout du style violet pour la nav */
+        nav {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #6a0dad; /* violet */
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0 15px;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #9400d3; /* violet plus clair au survol */
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .intro-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 800px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .intro-container h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #34495e;
+        }
+
+        .intro-container p {
+            font-size: 16px;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+
+        .intro-container img {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            border-radius: 10px;
+            margin: 15px auto;
+            display: block;
+        }
+
+        /* Bouton recoloré en violet */
+        .intro-container button {
+            background-color: #6a0dad;
+            color: white;
+            padding: 12px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: 700;
+            margin-top: 20px;
+        }
+
+        .intro-container button:hover {
+            background-color: #9400d3;
+        }
+
+        .game-container {
+            display: none;
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .game-container h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .game-container img {
+            width: 80%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 8px;
+            margin: 20px auto;
+            display: block;
+        }
+
+        .game-container .controls {
+            margin: 20px 0;
+        }
+
+        .game-container .controls input {
+            padding: 12px;
+            font-size: 16px;
+            width: 70%;
+            margin-right: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .game-container .controls button {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .game-container .controls button:hover {
+            background-color: #2980b9;
+        }
+
+        .result {
+            font-size: 18px;
+            margin: 20px 0;
+            color: #34495e;
+        }
+
+        .next-button {
+            background-color: #f39c12;
+            color: white;
+            padding: 12px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .next-button:hover {
+            background-color: #e67e22;
+        }
+
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="../JF/présentation.html">Géographie</a>
+        <a href="../MARTIAL/Guide interactif.html">Guide interactif</a>
+        <a href="../Noah/Quiz sur la Guadeloupe.html">Quiz sur la Guadeloupe</a>
+        <a href="../MARTIAL/jeu interactif.html">jeu interactif</a>
+
+    </nav>
+    
+
+    <!-- Section d'introduction avant le jeu -->
+    <div class="intro-container">
+        <h1>Bienvenue dans le jeu GeoGuesser !</h1>
+
+        <p>Avant de commencer, voici quelques lieux emblématiques de la Guadeloupe. Essaye de les reconnaître pendant le jeu !</p>
+
+        <!-- Présentation des lieux -->
+        <div>
+            <h3>Le Lycée Charles Coeffin</h3>
+            <p>Le Lycée Charles Coeffin est un établissement scolaire situé à Baie-Mahault, sur l'île de Grande-Terre. Il est réputé pour son enseignement et ses installations modernes, et se trouve à proximité de l'océan Atlantique.</p>
+            <img src="lycee charles coeffin.png" alt="Lycée Charles Coeffin">
+
+            <h3>La Plage de Sainte-Anne</h3>
+            <p>La plage de Sainte-Anne est l'une des plus belles de la Guadeloupe, célèbre pour son sable blanc et ses eaux turquoise. Elle est située dans la commune de Saint-Anne, sur la pointe sud de Grande-Terre, et est très prisée des touristes et des locaux.</p>
+            <img src="ste-anne.png" alt="Plage de Sainte-Anne">
+
+            <h3>La Soufrière</h3>
+            <p>La Soufrière est un volcan actif situé sur l'île de Basse-Terre. C'est l'un des volcans les plus imposants de la région, offrant des paysages impressionnants et des sentiers de randonnée populaires. Il domine le Parc National de la Guadeloupe.</p>
+            <img src="soufriere.png" alt="Soufrière">
+
+            <h3>La Pointe des Châteaux</h3>
+            <p>La Pointe des Châteaux est un point de vue spectaculaire situé à l'extrémité de la côte est de Grande-Terre. Ce site offre des panoramas exceptionnels sur l'océan Atlantique, avec des formations rocheuses impressionnantes et des plages isolées.</p>
+            <img src="pdc.png" alt="Pointe des Châteaux">
+
+            <h3>Le Zoo de la Guadeloupe</h3>
+            <p>Le Zoo de la Guadeloupe est situé à Basse-Terre et abrite une grande variété d'animaux locaux et exotiques. C'est un lieu de découverte et d'éducation à la biodiversité, où les visiteurs peuvent observer des animaux dans un environnement naturel.</p>
+            <img src="zoo.png" alt="Zoo de la Guadeloupe">
+        </div>
+
+        <!-- Bouton pour commencer le jeu -->
+        <button id="startButton">Passer au jeu</button>
+    </div>
+
+    <!-- Container du jeu -->
+    <div class="game-container" style="display: none;">
+        <h1>GeoGuessr-like Game</h1>
+
+        <div class="image-container">
+            <img src="" id="locationImage" alt="Lieu à deviner">
+        </div>
+
+        <div class="controls">
+            <input type="text" id="guessLocation" placeholder="Entrez un lieu (ex: Endroit de la Guadeloupe)">
+            <button id="submitGuess">Soumettre</button>
+        </div>
+
+        <div class="result">
+            <p id="feedback"></p>
+            <p id="score">Score : 0</p>
+        </div>
+
+        <button id="nextButton" class="next-button" style="display: none;">Suivant</button>
+    </div>
+
+    <script>
+        const locations = [
+            { image: "photo-soufriere.png", place: "Soufriere" },
+            { image: "anne-photo.png", place: "Sainte-Anne" },
+            { image: "lycee cc.png", place: "Charles Coeffin" },
+            { image: "pointe des chateaux.png", place: "Pointe des Chateaux" },
+            { image: "zoo de la guadeloupe.png", place: "Zoo de la Guadeloupe" }
+        ];
+
+        let currentLocationIndex = 0;
+        let score = 0;
+
+        function showLocation() {
+            const location = locations[currentLocationIndex];
+            document.getElementById('locationImage').src = location.image;
+            document.getElementById('feedback').innerText = '';
+            document.getElementById('guessLocation').value = '';
+        }
+
+        document.getElementById('submitGuess').addEventListener('click', function () {
+            const userGuess = document.getElementById('guessLocation').value.trim().toLowerCase();
+            const correctPlace = locations[currentLocationIndex].place.toLowerCase();
+
+            if (userGuess === correctPlace) {
+                score += 10;
+                document.getElementById('feedback').innerText = "Bravo ! C'est la bonne réponse.";
+            } else {
+                document.getElementById('feedback').innerText = `Dommage ! La bonne réponse était : ${locations[currentLocationIndex].place}`;
+            }
+
+            document.getElementById('score').innerText = "Score : " + score;
+            document.getElementById('nextButton').style.display = "block";
+        });
+
+        document.getElementById('nextButton').addEventListener('click', function () {
+            currentLocationIndex++;
+            if (currentLocationIndex < locations.length) {
+                showLocation();
+                document.getElementById('nextButton').style.display = "none";
+            } else {
+                document.getElementById('feedback').innerText = "Le jeu est terminé !";
+                document.getElementById('nextButton').style.display = "none";
+            }
+        });
+
+        document.getElementById('startButton').addEventListener('click', function () {
+            document.querySelector('.intro-container').style.display = "none";
+            document.querySelector('.game-container').style.display = "block";
+            showLocation();
+        });
+    </script>
+
+</body>
+
+</html>

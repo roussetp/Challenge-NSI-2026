@@ -1,0 +1,4 @@
+.ombre-box {
+  box-shadow: 0 10px 10px rgba(181, 66, 72, 0.5);
+  transition: transform .5s ease;
+}

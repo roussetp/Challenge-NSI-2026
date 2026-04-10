@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>DM1 Thème D</title>
+
+<style>
+body {background-color: blanchedalmond; text-align:center;}
+p {color:blue; font-size:25px;}
+
+#valeurDecimale1 {color:rgb(0,255,115);}
+#valeurDecimale2 {color:rgb(255,94,0);}
+
+.valeur {
+background-color:rgb(226,43,156);
+color:white;
+padding:5px;
+border-radius:5px;
+}
+
+input{
+font-size:20px;
+padding:5px;
+border-radius:5px;
+border:2px solid gray;
+}
+</style>
+
+</head>
+
+<body>
+
+<p>
+Convertir <span id="valeurDecimale1" class="valeur"></span>
+décimal en binaire :
+<input type="text" id="resultat1" onchange="traiterSaisie1()">
+</p>
+
+<p>
+Convertir <span id="valeurDecimale2" class="valeur"></span>
+décimal en hexadecimal :
+<input type="text" id="resultat2" onchange="traiterSaisie2()">
+</p>
+
+</body>
+
+<script>
+
+var nbDecimal = Math.floor(Math.random()*16)+1;
+
+document.getElementById("valeurDecimale1").innerHTML=nbDecimal;
+document.getElementById("valeurDecimale2").innerHTML=nbDecimal;
+
+function traiterSaisie1()
+{
+messageSaisie=document.querySelector('#resultat1');
+resultatAttendu="0b"+nbDecimal.toString(2);
+
+if(messageSaisie.value==resultatAttendu)
+{
+alert("Woulo Bravo !");
+}
+else
+{
+alert("Ou pèd! Le résultat est "+resultatAttendu);
+}
+
+messageSaisie.value='';
+
+nbDecimal = Math.floor(Math.random()*16)+1;
+
+document.getElementById("valeurDecimale1").innerHTML=nbDecimal;
+document.getElementById("valeurDecimale2").innerHTML=nbDecimal;
+}
+
+function traiterSaisie2()
+{
+messageSaisie=document.querySelector('#resultat2');
+resultatAttendu="0x"+nbDecimal.toString(16);
+
+if(messageSaisie.value==resultatAttendu)
+{
+alert("Woulo Bravo !");
+}
+else
+{
+alert("Ou pèd! Le résultat est "+resultatAttendu);
+}
+
+messageSaisie.value='';
+
+nbDecimal = Math.floor(Math.random()*16)+1;
+
+document.getElementById("valeurDecimale1").innerHTML=nbDecimal;
+document.getElementById("valeurDecimale2").innerHTML=nbDecimal;
+}
+
+</script>
+
+</html>

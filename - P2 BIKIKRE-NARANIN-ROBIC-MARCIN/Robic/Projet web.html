@@ -1,0 +1,388 @@
+<!--20/20 Excellent travail-->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World of Univers – Minecraft</title>
+    <link rel="icon" type="image/x-icon" href="images.ico">
+
+    <style>
+        @font-face {
+            font-family: "Minecraft";
+            src: url("minecraft.ttf") format("truetype");
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            image-rendering: pixelated;
+        }
+
+        body {
+            font-family: "Minecraft", monospace;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url("end.jpg") no-repeat center center fixed;
+            background-size: cover;
+            color: #f0f0f0;
+        }
+
+        main {
+            background: rgba(10, 10, 10, 0.95);
+            padding: 50px 60px;
+            max-width: 1000px;
+            width: 90%;
+            border-radius: 12px;
+            border: 3px solid #5C9E31;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.9),
+                0 0 20px #58C9F3;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        header h1 {
+            font-size: 52px;
+            color: #5C9E31;
+            text-shadow: 4px 4px 0 #000;
+            margin-bottom: 20px;
+        }
+
+        header p {
+            font-size: 18px;
+            color: #EED9A6;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        section {
+            margin-bottom: 45px;
+        }
+
+        h2 {
+            font-size: 30px;
+            color: #58C9F3;
+            text-shadow: 2px 2px 0 #000;
+            border-bottom: 3px solid #58C9F3;
+            padding-bottom: 7px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        h3 {
+            font-size: 22px;
+            color: #FFD166;
+            text-shadow: 2px 2px 0 #000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin: 10px 0;
+            color: #f0f0f0;
+        }
+
+        ul {
+            margin: 10px 0 15px 30px;
+            list-style-type: square;
+        }
+
+        li {
+            margin: 6px 0;
+            transition: transform 0.2s, color 0.2s;
+        }
+
+        li:hover {
+            color: #FFD166;
+            transform: scale(1.08);
+        }
+
+        a,
+        button {
+            text-decoration: none;
+            color: #58C9F3;
+            transition: all 0.2s;
+        }
+
+        a:hover,
+        button:hover {
+            color: #FFD166;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #aaaaaa;
+            border-top: 1px solid #555;
+            padding-top: 15px;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                padding: 35px 25px;
+            }
+
+            header h1 {
+                font-size: 38px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            h3 {
+                font-size: 20px;
+            }
+        }
+        nav {
+            display: flex;
+            justify-content: space-around;
+            /* gauche - centre - droite */
+            align-items: center;
+            width: 100%;
+            padding: 20px 40px;
+        }
+        nav a {
+            text-decoration: none;
+            background-color: #350061;
+            color: rgb(117, 34, 34);
+            padding: 12px 25px;
+            border-radius: 8px;
+
+            
+            font-weight: bold;
+            transition: 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        nav a:hover {
+            background-color: #b8868a;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<script>
+    const mots = [
+        "SURVIE",
+        "CREATIF",
+        "PAISIBLE",
+        "PVP",
+        "BEDWARS",
+        "SKYWARS"
+    ];
+
+    let motSecret = "";
+    let motCache = [];
+    let essais = 8;
+
+    function choisirMot() {
+        motSecret = mots[Math.floor(Math.random() * mots.length)];
+        motCache = [];
+
+        for (let i = 0; i < motSecret.length; i++) {
+            if (motSecret[i] === " ") {
+                motCache.push(" ");
+            } else {
+                motCache.push("_");
+            }
+        }
+
+        essais = 8;
+        document.getElementById("messageJeu").textContent = "";
+        document.getElementById("essaisRestants").textContent = "Essais restants : " + essais;
+        afficherMot();
+    }
+
+    function afficherMot() {
+        document.getElementById("motAffiche").textContent = motCache.join(" ");
+    }
+
+    function proposerLettre() {
+        let lettre = document.getElementById("lettreInput").value.toUpperCase();
+        document.getElementById("lettreInput").value = "";
+
+        if (!lettre.match(/[A-Z]/)) {
+            return;
+        }
+
+        let trouve = false;
+
+        for (let i = 0; i < motSecret.length; i++) {
+            if (motSecret[i] === lettre) {
+                motCache[i] = lettre;
+                trouve = true;
+            }
+        }
+
+        if (!trouve) {
+            essais--;
+        }
+
+        afficherMot();
+        document.getElementById("essaisRestants").textContent = "Essais restants : " + essais;
+
+        if (motCache.join("") === motSecret) {
+            document.getElementById("messageJeu").textContent = "🎉 Bravo ! Tu as trouvé le mode : " + motSecret;
+        }
+
+        if (essais <= 0) {
+            document.getElementById("messageJeu").textContent = "💀 Perdu ! Le mot était : " + motSecret;
+        }
+    }
+
+    function rejouer() {
+        choisirMot();
+    }
+
+    choisirMot();
+</script>
+
+<body>
+    <main>
+        <header>
+            <nav><a href="../Bikikre/minecraft.html">Page d'accueil</a><a href="../Naranin/carft.html">Les Crafts</a><a
+            href="../Marcin/Quizz.html">Les Biomes</a></nav>
+            <h1>🪓 L’Univers de Minecraft</h1>
+            <p>
+                Minecraft est un environnement sandbox infini où le joueur agit comme un véritable programmeur de
+                mondes. Chaque bloc, ressource et créature peut être exploité ou manipulé pour créer, survivre et
+                explorer.
+            </p>
+        </header>
+
+        <section>
+            <h2>🧱 Les modes de jeu fondamentaux</h2>
+
+            <h3>🟢 Mode Survie</h3>
+            <p>
+                Le mode Survie est le noyau algorithmique de Minecraft. Ici, chaque joueur initialise sa session avec
+                zéro
+                ressources et doit compiler son inventaire pour rester opérationnel.
+            </p>
+            <ul>
+                <li>Extraction et traitement de ressources (bois, pierre, minerais)</li>
+                <li>Conception et optimisation d’outils et d’armes</li>
+                <li>Gestion dynamique des points de vie ❤️ et de la barre de faim 🍗</li>
+                <li>Défense contre des entités hostiles générées la nuit</li>
+            </ul>
+            <p>
+                L’évolution du joueur inclut l’activation de modules avancés comme le Nether et l’End, culminant dans
+                l’exécution du boss final : l’Ender Dragon 🐉.
+            </p>
+
+            <h3>🟡 Mode Paisible</h3>
+            <p>
+                Le mode Paisible est une variante sécurisée du mode Survie. Les entités hostiles sont
+                désactivées,<!--  -->
+                permettant une exploration et une création sans interruptions.
+            </p>
+            <ul>
+                <li>Suppression des ennemis agressifs</li>
+                <li>Maintien des animaux pour un écosystème stable</li>
+                <li>Barre de faim et dégâts environnementaux actifs</li>
+            </ul>
+            <p>
+                Idéal pour expérimenter, apprendre les mécaniques ou construire sans contraintes.
+            </p>
+
+            <h3>🔵 Mode Créatif</h3>
+            <p>
+                Le mode Créatif est un environnement open-source illimité. Toutes les ressources sont pré-chargées et le
+                joueur
+                devient invincible, optimisant ainsi la construction et la simulation.
+            </p>
+            <ul>
+                <li>Inventaire infini de blocs et d’objets ♾️</li>
+                <li>Vol et navigation libre 🕊️</li>
+                <li>Déploiement de structures massives et complexes</li>
+                <li>Programmation de mécanismes Redstone et création de maps personnalisées</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>⚔️ Les modes de jeu multijoueurs</h2>
+
+            <h3>💥 PVP (Player vs Player)</h3>
+            <p>
+                Le PVP désigne l’interface compétitive entre instances joueurs. Les combats peuvent être isolés ou en
+                équipes.
+            </p>
+            <ul>
+                <li><strong>1v1 :</strong> Duel direct entre deux instances</li>
+                <li><strong>Team PVP :</strong> Bataille coordonnée en équipe</li>
+                <li><strong>Free-for-all :</strong> Algorithme chaotique “tout contre tous”</li>
+            </ul>
+
+            <h3>🛏️ Bedwars</h3>
+            <p>
+                Bedwars implémente une logique de survie basée sur la protection et la destruction de lits. Chaque
+                équipe doit
+                gérer ressources, défenses et stratégies offensives pour rester active.
+            </p>
+            <ul>
+                <li>Réapparition tant que le lit est intact</li>
+                <li>Collecte de ressources (fer, or, diamants) pour upgrader équipement et armes</li>
+                <li>Programmation de défenses et barrières autour du lit</li>
+                <li>Stratégie adaptative contre les adversaires</li>
+            </ul>
+
+            <h3>🌌 SkyWars</h3>
+            <p>
+                SkyWars est un environnement de survie compétitive généré sur des îles flottantes. Les joueurs doivent
+                optimiser chaque mouvement et chaque bloc pour survivre et éliminer les adversaires.
+            </p>
+        </section>
+
+        <section>
+            <h2>🧩 Jeu : Mot Mystère des Modes Minecraft</h2>
+
+            <p>
+                Devine un mode de jeu de Minecraft en proposant des lettres !
+            </p>
+
+            <p id="motAffiche" style="font-size: 22px; margin-top: 15px;"></p>
+
+            <input type="text" id="lettreInput" maxlength="1" placeholder="Lettre"
+                style="padding:8px; font-family:Minecraft; text-align:center; width:60px;">
+
+            <button onclick="proposerLettre()"
+                style="padding:8px 15px; font-family:Minecraft; background:#5C9E31; border:none; cursor:pointer;">
+                Proposer
+            </button>
+
+            <p id="messageJeu" style="margin-top:15px;"></p>
+            <p id="essaisRestants"></p>
+
+            <button onclick="rejouer()"
+                style="padding:6px 12px; font-family:Minecraft; margin-top:10px; background:#58C9F3; border:none; cursor:pointer;">
+                Rejouer
+            </button>
+        </section>
+
+        <footer>
+            L'univers de Minecraft @ - Encyclopédie officielle de Minecraft
+        </footer>
+    </main>
+</body>
+
+</html>

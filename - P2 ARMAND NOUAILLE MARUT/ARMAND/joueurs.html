@@ -1,0 +1,213 @@
+<!--18/20 Très bon travail mais un seul joueur de présenté. Manque les liens-->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Joueurs de foot - Humour</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e1e;
+            color: #f5f5f5;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #00ff99;
+            margin-top: 30px;
+        }
+
+        h2 {
+            color: #ffcc00;
+        }
+
+        h3 {
+            color: #4da6ff;
+        }
+
+        .container {
+            width: 70%;
+            margin: auto;
+        }
+
+        .joueur {
+            background-color: #2c2c2c;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 30px 0;
+            box-shadow: 0 0 10px rgba(0, 255, 153, 0.4);
+            text-align: left;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background: #00ff99;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #00cc77;
+        }
+
+        input {
+            padding: 8px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body><p style="font-size: 30px"><a href="../MARUT/index.html">Les grands clubs de foot</a> / <a href="../NOUAILLE/quiz1.html">Trophées depuis 2009</a></p>
+
+    <h1>Les joueurs de foot (version humour)</h1>
+
+    <div class="container">
+        <div class="joueur">
+
+            <h2>Mbappé</h2>
+
+            <h3>Le début du drame</h3>
+            <p>
+                Quatre ans plus tard, Mbappé n’a toujours pas gagné de Ballon d’Or.
+                Il décide alors d’aller voir un médecin pour augmenter sa puissance.
+                Le prochain match, Mbappé devient aveugle et grâce à ça, il débloque l’Ultra Instinct.
+            </p>
+
+            <h3>Le miracle</h3>
+            <p>
+                Tout le monde pensait que sa carrière était finie, mais c’est là que le drame
+                devient un miracle. Comme il ne voyait plus les défenseurs, il n’avait plus peur d’eux.
+                Il courait tout droit, guidé par le bruit du ballon et les cris paniqués des défenseurs.
+            </p>
+
+            <p>
+                Il dribblait sans faire exprès, frappait au hasard mais toujours en lucarne,
+                et quand il marquait, il célébrait du mauvais côté du stade.
+            </p>
+
+            <h3>Les réactions</h3>
+            <p>
+                Messi essayait de devenir aveugle aussi, mais ça ne marchait pas.
+                Haaland a tenté de jouer les yeux fermés et a cassé la barre, le poteau
+                et le photographe. Neymar a simulé la cécité mais est quand même tombé tout seul.
+            </p>
+
+            <h3>La légende</h3>
+            <p>
+                La saison suivante, Mbappé joue tous les matchs avec des lunettes noires.
+                En finale de Ligue des Champions, il passe en mode Ultra Instinct aveugle et sourd
+                et marque un triplé assis.
+            </p>
+
+            <p>
+                À la fin de l’année, il reçoit enfin deux trophées :
+                le Ballon d’Or, et le Ballon d’Or mais sans regarder.
+                Depuis ce jour, une légende circule dans les stades :
+                si tu fermes les yeux très fort, tu rates ta frappe.
+                Sauf si tu t’appelles Mbappé.
+            </p>
+
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>Jeu : Qui suis-je ? ⚽</h2>
+
+    <div class="container">
+        <div class="joueur">
+
+            <p id="indice1"></p>
+            <p id="indice2"></p>
+            <p id="indice3"></p>
+
+            <input type="text" id="reponse" placeholder="Tape le nom du joueur">
+
+            <br>
+            <button onclick="verifier()">Deviner</button>
+
+            <h3 id="resultat"></h3>
+
+        </div>
+    </div>
+
+    <script>
+
+        // Liste des joueurs avec indices
+        const joueurs = [
+            { nom: "mbappe", indices: ["Je suis français", "Je suis très rapide", "J'ai gagné la Coupe du Monde 2018"] },
+            { nom: "ronaldo", indices: ["Je suis portugais", "Je crie SIUUU", "J'ai joué au Real Madrid"] },
+            { nom: "messi", indices: ["Je suis argentin", "On me surnomme La Pulga", "J'ai gagné la Coupe du Monde 2022"] },
+            { nom: "haaland", indices: ["Je suis norvégien", "Je suis très puissant", "Je joue à Manchester City"] },
+            { nom: "neymar", indices: ["Je suis brésilien", "Je fais beaucoup de dribbles", "J'ai joué au Barça et au PSG"] },
+            { nom: "maradona", indices: ["Je suis argentin", "J'ai marqué la main de Dieu", "Je suis une légende du Napoli"] },
+
+            { nom: "pele", indices: ["Je suis brésilien", "J'ai gagné 3 Coupes du Monde", "On me considère comme le roi du football"] },
+            { nom: "zidane", indices: ["Je suis français", "J'ai marqué une volée mythique en finale de Ligue des Champions 2002", "J'ai gagné la Coupe du Monde 1998"] },
+            { nom: "barcola", indices: ["Je suis français", "Je joue au PSG", "Je suis très rapide et dribble beaucoup"] },
+            { nom: "lewandowski", indices: ["Je suis polonais", "Je suis un grand buteur", "J'ai joué au Bayern Munich et au Barça"] }
+        ];
+
+        let score = 0;
+        let index = 0;
+        let maxTours = joueurs.length;
+
+        // Mélange la liste pour éviter les doublons
+        function melanger(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        melanger(joueurs);
+
+        function nouveauJoueur() {
+            if (index >= maxTours) {
+                document.getElementById("indice1").textContent = "";
+                document.getElementById("indice2").textContent = "";
+                document.getElementById("indice3").textContent = "";
+                document.getElementById("reponse").style.display = "none";
+                document.querySelector("button").style.display = "none";
+                document.getElementById("resultat").textContent =
+                    "🏆 Jeu terminé ! Ton score : " + score + " / " + maxTours;
+                return;
+            }
+
+            let joueur = joueurs[index];
+            document.getElementById("indice1").textContent = "Indice 1 : " + joueur.indices[0];
+            document.getElementById("indice2").textContent = "Indice 2 : " + joueur.indices[1];
+            document.getElementById("indice3").textContent = "Indice 3 : " + joueur.indices[2];
+
+            document.getElementById("reponse").value = "";
+            document.getElementById("resultat").textContent = "";
+        }
+
+        function verifier() {
+            let joueur = joueurs[index];
+            let reponse = document.getElementById("reponse").value.toLowerCase();
+            if (reponse.includes(joueur.nom)) {
+                score++;
+                document.getElementById("resultat").textContent = "✅ Bonne réponse !";
+            } else {
+                document.getElementById("resultat").textContent = "❌ Mauvaise réponse ! C'était " + joueur.nom;
+            }
+            index++;
+            setTimeout(nouveauJoueur, 2000);
+        }
+
+        nouveauJoueur();
+
+    </script>
+
+</body>
+
+</html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             

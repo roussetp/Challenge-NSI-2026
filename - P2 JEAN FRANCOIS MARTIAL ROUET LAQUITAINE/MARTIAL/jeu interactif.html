@@ -1,0 +1,192 @@
+<!--16/20 Très beau résultat. Pas de constance dans le travail en classe. D'où vient le code ?-->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Jeu - Trouve les lieux de Guadeloupe</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    text-align:center;
+    background: url('Gwada.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    margin:0;
+    padding:0;
+}
+
+/* Navigation stylisée */
+nav {
+    background-color: #f0f0f0;
+    text-align: center;
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav a {
+    color: #6a0dad; /* violet */
+    text-decoration: none;
+    font-weight: 600;
+    margin: 0 20px;
+    font-size: 16px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav a:hover {
+    background-color: #eae6fa;
+    color: #9400d3;
+}
+
+h1{
+    margin-top:20px;
+    text-shadow: 1px 1px 2px black;
+}
+
+/* Boîte de jeu */
+#game{
+    background-color: rgba(0,0,0,0.6);
+    width: 60%;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    font-size: 20px;
+    text-align: center;
+}
+
+/* Carte stylisée */
+#map{
+    height:500px;
+    width:80%;
+    margin:auto;
+    border-radius:10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+/* Boutons stylisés */
+button{
+    padding:10px 20px;
+    font-size:16px;
+    margin-top:10px;
+    cursor:pointer;
+    background-color: #6a0dad;
+    color:white;
+    border:none;
+    border-radius:5px;
+    font-weight:600;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+button:hover{
+    background-color: #9400d3;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+</style>
+</head>
+
+<body>
+    <nav>
+        <a href="../JF/présentation.html">Géographie</a>
+        <a href="../MARTIAL/Guide interactif.html">Guide interactif</a>
+        <a href="../Noah/Quiz sur la Guadeloupe.html">Quiz sur la Guadeloupe</a>
+        <a href="../ROUET/geoguesser sur la GP.html">Geoguesser sur la Guadeloupe</a>
+    </nav>
+
+<h1>🌴 Jeu : Trouve les lieux de Guadeloupe</h1>
+
+<div id="game">
+    Trouve : <b id="target"></b>
+    <br>
+    Score : <span id="score">0</span>
+    <br>
+    <button onclick="nouveauLieu()">Nouveau lieu</button>
+</div>
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+// création carte
+const map = L.map('map').setView([16.25,-61.55],9);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+    maxZoom:18
+}).addTo(map);
+
+// lieux à trouver
+const lieux = [
+    {name:"Pointe des Châteaux", lat:16.245, lng:-61.175},
+    {name:"La Soufrière", lat:16.044, lng:-61.664},
+    {name:"Basse-Terre", lat:15.998, lng:-61.732},
+    {name:"Grande Anse (Deshaies)", lat:16.307, lng:-61.793},
+    {name:"Les Saintes", lat:15.864, lng:-61.581},
+    {name:"Marie-Galante", lat:15.93, lng:-61.27},
+    {name:"La Désirade", lat:16.32, lng:-61.05}
+];
+
+let lieuActuel = null;
+let score = 0;
+let marker;
+
+// choisir un lieu
+function nouveauLieu(){
+    const random = Math.floor(Math.random()*lieux.length);
+    lieuActuel = lieux[random];
+    document.getElementById("target").textContent = lieuActuel.name;
+}
+
+// calcul distance
+function distance(lat1, lon1, lat2, lon2){
+    const R = 6371;
+    const dLat = (lat2-lat1) * Math.PI/180;
+    const dLon = (lon2-lon1) * Math.PI/180;
+    const a =
+        Math.sin(dLat/2)*Math.sin(dLat/2)+
+        Math.cos(lat1*Math.PI/180)*
+        Math.cos(lat2*Math.PI/180)*
+        Math.sin(dLon/2)*Math.sin(dLon/2);
+    const c = 2 * Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+    return R*c;
+}
+
+// clic sur la carte
+map.on("click", function(e){
+    if(!lieuActuel) return;
+
+    if(marker){
+        map.removeLayer(marker);
+    }
+
+    marker = L.marker(e.latlng).addTo(map);
+
+    const d = distance(
+        e.latlng.lat,
+        e.latlng.lng,
+        lieuActuel.lat,
+        lieuActuel.lng
+    );
+
+    let points = Math.max(0,100 - Math.floor(d*5));
+    score += points;
+
+    document.getElementById("score").textContent = score;
+
+    alert(
+        "Distance : " + d.toFixed(2) + " km\n" +
+        "Points gagnés : " + points
+    );
+});
+
+// premier lieu
+nouveauLieu();
+</script>
+
+</body>
+</html>

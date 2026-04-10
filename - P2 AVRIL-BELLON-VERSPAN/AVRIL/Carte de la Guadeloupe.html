@@ -1,0 +1,185 @@
+<!--16/20 Très bons résultats mais beaucoup d'IA. Pas de lien avec les autres-->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Devoir de géographie – Guadeloupe (Niveau Première)</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #map {
+            height: 60vh;
+        }
+
+        #panel {
+            background: #8eda15;
+            padding: 10px;
+            text-align: center;
+        }
+
+        button {
+            padding: 8px 15px;
+            font-size: 15px;
+        }
+
+        /* Barre de progression */
+        #progressBarContainer {
+            width: 80%;
+            height: 15px;
+            background: #dddddd;
+            border-radius: 10px;
+            margin: 10px auto 0 auto;
+        }
+
+        #progressBar {
+            height: 100%;
+            width: 0%;
+            background-color: #004d00;
+            border-radius: 10px;
+            transition: width 0.4s;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Placer des lieux de Guadeloupe – Niveau Première</h1>
+
+    <div id="panel">
+        <p><strong>Lieu :</strong> <span id="nomLieu"></span></p>
+        <img id="imageLieu">
+        <button onclick="valider()">Valider</button>
+        <p id="message"></p>
+
+        <div id="progressBarContainer">
+            <div id="progressBar"></div>
+        </div>
+    </div>
+
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        // Carte OpenStreetMap classique
+        var map = L.map('map').setView([16.25, -61.55], 10);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        var lieux = [
+            { nom: "La Soufrière", coord: [16.044, -61.664], img: "soufriere.jpg", indice: "Volcan actif situé dans le sud de Basse-Terre" },
+            { nom: "Basse-Terre", coord: [15.999, -61.732], img: "basse_terre.jpg", indice: "Préfecture administrative située sur la côte caraïbe" },
+            { nom: "Pointe-à-Pitre", coord: [16.241, -61.533], img: "pointe_a_pitre.jpg", indice: "Principal centre économique et portuaire" },
+            { nom: "Les Abymes", coord: [16.270, -61.525], img: "abymes.jpg", indice: "Commune la plus peuplée de la Guadeloupe" },
+            { nom: "Baie-Mahault", coord: [16.260, -61.587], img: "baie_mahault.jpg", indice: "Zone industrielle et commerciale majeure" },
+            { nom: "Jarry", coord: [16.263, -61.590], img: "jarry.jpg", indice: "Principale zone industrialo-portuaire" },
+            { nom: "Aéroport Pôle Caraïbes", coord: [16.265, -61.531], img: "aeroport.jpg", indice: "Principal aéroport international" },
+            { nom: "Sainte-Anne", coord: [16.227, -61.379], img: "sainte_anne.jpg", indice: "Station balnéaire importante de Grande-Terre" },
+            { nom: "Le Moule", coord: [16.332, -61.346], img: "le_moule.jpg", indice: "Ville agricole et sucrière" },
+            { nom: "Deshaies", coord: [16.306, -61.791], img: "deshaies.jpg", indice: "Commune touristique du nord-ouest de Basse-Terre" },
+            { nom: "Bouillante", coord: [16.133, -61.766], img: "bouillante.jpg", indice: "Commune associée à la production d’énergie géothermique" },
+            { nom: "Parc national de la Guadeloupe", coord: [16.123, -61.684], img: "parc_national.jpg", indice: "Espace naturel protégé de Basse-Terre" },
+            { nom: "Les Saintes", coord: [15.864, -61.580], img: "saintes.jpg", indice: "Archipel situé au sud de Basse-Terre" },
+            { nom: "Marie-Galante", coord: [15.920, -61.270], img: "marie_galante.jpg", indice: "Île agricole spécialisée dans la canne à sucre" },
+            { nom: "Port-Louis", coord: [16.419, -61.532], img: "port_louis.jpg", indice: "Commune littorale du nord de Grande-Terre" },
+            { nom: "Anse-Bertrand", coord: [16.473, -61.508], img: "anse_bertrand.jpg", indice: "Commune du nord de Grande-Terre" },
+            { nom: "La Désirade", coord: [16.322, -61.063], img: "la_desirade.jpg", indice: "Île située à l’est de la Guadeloupe" },
+            { nom: "La Friche (Baie-Mahault)", coord: [16.257, -61.587], img: "la_friche.jpg", indice: "Port de plaisance situé à Baie-Mahault, dans le Grand Port Maritime" },
+            { nom: "Petit-Bourg", coord: [16.191, -61.594], img: "petit_bourg.jpg", indice: "Commune la plus vaste de la Guadeloupe, entre mer et montagne" },
+            { nom: "Capesterre-Belle-Eau", coord: [16.048, -61.565], img: "capesterre.jpg", indice: "Commune située sur la côte est de Basse-Terre, exposée aux alizés" },
+            { nom: "Le Gosier", coord: [16.204, -61.493], img: "gosier.jpg", indice: "Commune touristique proche de Pointe-à-Pitre" },
+            { nom: "Petit-Canal", coord: [16.389, -61.488], img: "petit_canal.jpg", indice: "Commune du nord de Grande-Terre marquée par l’histoire de l’esclavage" },
+            { nom: "Vieux-Habitants", coord: [16.056, -61.765], img: "vieux_habitants.jpg", indice: "Commune ancienne située sur la côte caraïbe de Basse-Terre" },
+            { nom: "Saint-Claude", coord: [16.015, -61.721], img: "saint_claude.jpg", indice: "Commune au pied de La Soufrière, connue pour ses sources thermales et son rôle dans l’activité volcanique" },
+            { nom: "Gourbeyre", coord: [16.015, -61.733], img: "gourbeyre.jpg", indice: "Commune agricole de Basse-Terre, marquée par des plantations de café et de cacao historiques" },
+            { nom: "Sainte-Rose", coord: [16.317, -61.683], img: "sainte_rose.jpg", indice: "Commune de Basse-Terre avec des zones côtières protégées et une forte activité agricole" },
+            { nom: "Grand-Bourg", coord: [15.910, -61.280], img: "grand_bourg.jpg", indice: "Chef-lieu de Marie-Galante, centre économique et culturel, avec marchés traditionnels et bâtiments coloniaux" },
+            { nom: "Capesterre-de-Marie-Galante", coord: [15.920, -61.183], img: "capesterre_mg.jpg", indice: "Commune agricole orientée vers la production de sucre et de rhum, avec un port artisanal" },
+            { nom: "Baillif", coord: [16.021, -61.744], img: "baillif.jpg", indice: "Commune de Basse-Terre à l’architecture coloniale, avec un patrimoine religieux notable" }
+        ];
+
+        var index = 0;
+        var score = 0;
+        var essais = 0;
+        var marqueur;
+
+        // Afficher le lieu
+        function afficherLieu() {
+            essais = 0;
+            document.getElementById("nomLieu").innerText = lieux[index].nom;
+            document.getElementById("message").innerText = "";
+
+            // Mettre à jour la barre de progression
+            var progression = ((index) / lieux.length) * 100;
+            document.getElementById("progressBar").style.width = progression + "%";
+        }
+
+        afficherLieu();
+
+        // Clic sur la carte
+        map.on('click', function (e) {
+            if (marqueur) map.removeLayer(marqueur);
+            marqueur = L.marker(e.latlng).addTo(map);
+        });
+
+        // Validation
+        function valider() {
+            if (!marqueur) {
+                alert("Clique sur la carte pour placer le lieu.");
+                return;
+            }
+
+            var distance = marqueur.getLatLng().distanceTo(lieux[index].coord) / 1000;
+
+            if (distance < 5) {
+                score++;
+                document.getElementById("message").innerText = "✅ Correct";
+                passerLieu();
+            } else {
+                essais++;
+                if (essais === 1) {
+                    document.getElementById("message").innerText =
+                        "❌ Faux — Indice : " + lieux[index].indice;
+                } else {
+                    document.getElementById("message").innerText =
+                        "❌ Faux — Passage au lieu suivant";
+                    passerLieu();
+                }
+            }
+        }
+
+        // Passage au lieu suivant
+        function passerLieu() {
+            setTimeout(() => {
+                if (marqueur) map.removeLayer(marqueur);
+                marqueur = null;
+                index++;
+
+                if (index < lieux.length) {
+                    afficherLieu();
+                } else {
+                    document.getElementById("panel").innerHTML =
+                        "<h2>Travail terminé</h2><p>Score : " + score + " / " + lieux.length + "</p>";
+                    // Remplir complètement la barre à la fin
+                    document.getElementById("progressBar").style.width = "100%";
+                }
+            }, 1200);
+        }
+    </script>
+
+</body>
+
+</html>

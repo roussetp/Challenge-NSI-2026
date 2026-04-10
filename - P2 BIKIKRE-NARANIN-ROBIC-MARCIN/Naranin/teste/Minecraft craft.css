@@ -1,0 +1,124 @@
+body {
+    font-family: "Courier New", monospace;
+    background-color: #974eb9c0;
+    margin: 20px;
+    background-image: url(nether\ 1.jpg);
+    background-repeat: no-repeat;
+    background-position: ;
+    background-size: cover;
+}
+
+/* Titre principal */
+h1 {
+    color: #000000;
+    text-align: center;
+    background-color: #79687ed7;
+    padding: 15px;
+    box-shadow: 5px 5px 0px #000000a2;
+}
+
+/* Sous-titres */
+h2 {
+    color: #000000;
+    background-color: #7d6e85;
+    padding: 10px;
+    margin-top: 30px;
+    box-shadow: 4px 4px 0px #000000;
+}
+
+h3 {
+    color: #000000;
+    background-color: #534547;
+    padding: 10px;
+    margin-top: 30px;
+    box-shadow: 4px 4px 0px #f050c0;
+}
+
+/* Paragraphes */
+p {
+    color: #000000;
+    background-color: #654b7a;
+    padding: 10px;
+    margin-top: 10px;
+    line-height: 1.6;
+    box-shadow: 3px 3px 0px #000000;
+}
+
+h1,
+h2,
+p,
+h3 {
+    max-width: 1000px;
+    /* largeur réduite */
+    margin-left: auto;
+    margin-right: auto;
+    /* centrage */
+    opacity: 0.85;
+}
+
+img {
+    max-width: 700px;
+    /* largeur réduite */
+    margin-left: auto;
+    margin-right: auto;
+    /* centrage */
+    display: block;
+    margin: 0 auto;
+
+}
+.grille {
+    display: grid;
+    grid-template-columns: repeat(3, 70px);
+    grid-template-rows: repeat(3, 70px);
+    gap: 5px;
+    margin: 20px auto;
+    width: max-content;
+}
+
+.cellule {
+    border: 2px solid black;
+    background-color: #c6c6c6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+ol {
+    color: #ff0000;
+    font-size: 20px;
+}
+.objet {
+    width: 50px;
+    cursor: grab;
+}
+div img{
+    width: 50px;
+    margin: 10px;
+    cursor: grab;
+}
+nav {
+    display: flex;
+    justify-content: space-around; /* gauche - centre - droite */
+    align-items: center;
+    width: 100%;
+    padding: 20px 40px;
+}
+
+/* Style des boutons */
+nav a {
+    text-decoration: none;
+    background-color: #ae7bd1;
+    color: rgb(97, 22, 22);
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+/* Effet au survol */
+nav a:hover {
+    background-color: #8f66c5;
+    transform: scale(1.05);
+}

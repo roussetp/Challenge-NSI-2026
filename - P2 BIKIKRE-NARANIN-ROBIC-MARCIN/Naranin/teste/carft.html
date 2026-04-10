@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="Minecraft craft.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+    <a href="../Naranin/html.html"></a>
+    <header>
+        <img src="title.jpg" alt="Minecraft" width="50%">
+    </header>
+    <nav><a href="../Robic/Projet web.html">Modes de jeu</a><a href="../Bikikre/minecraft.html">Page d'acceuil</a><a
+            href="../Marcin/Quizz.html">Les biomes</a></nav>
+    <h1>Bienvenue dans l’univers de Minecraft</h1>
+    <p>Dans Minecraft il faut savoir se faire ses premiers outils!!
+        Sa tombe bien tu est sur le meilleur tuto de ton lycée! Dans un premiers temps une courte introduction de mc:
+    </p>
+    <br>
+    <p>Dans Minecraft, le craft est une mécanique essentielle qui permet de transformer des ressources brutes en objets
+        utiles. En combinant différents matériaux dans une table de craft, le joueur peut créer des outils, des armes,
+        des blocs ou encore des armures. Le craft est indispensable pour progresser dans le jeu, survivre, construire et
+        explorer le monde. Apprendre à crafter, c’est donc apprendre à utiliser intelligemment les ressources
+        disponibles pour évoluer dans l’aventure.</p>
+    <br>
+    <h2>Voici un inventaire:</h2>
+
+    <img src="invent et table de craft.jpg" title="inventaire joueur" />
+    <p>Ce qui est entouré en blue c'est l'inventaire et en rouge la table de craft</p>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <link rel="stylesheet" href="Minecraft craft.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            .grille {
+                display: grid;
+                grid-template-columns: repeat(3, 100px);
+                grid-template-rows: repeat(3, 100px);
+                gap: 5px;
+                margin: 20px auto;
+                width: max-content;
+            }
+
+            .cellule {
+                border: 2px solid black;
+                background-color: #c6c6c6;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .objet {
+                width: 80px;
+                cursor: grab;
+            }
+
+            .inventaire {
+                margin-top: 20px;
+                text-align: center;
+            }
+
+            .inventaire img {
+                width: 80px;
+                margin: 10px;
+                cursor: grab;
+            }
+
+            #inv {
+                text-align: center;
+            }
+        </style>
+
+        <p>Essayons maintenant de crafter une pioche en bois !</p>
+
+        <h2>🛠️ Mini-jeu : Fais la bonne recette !</h2>
+
+        <div class="grille">
+            <div class="cellule" data-x="0" data-y="0"></div>
+            <div class="cellule" data-x="1" data-y="0"></div>
+            <div class="cellule" data-x="2" data-y="0"></div>
+
+            <div class="cellule" data-x="0" data-y="1"></div>
+            <div class="cellule" data-x="1" data-y="1"></div>
+            <div class="cellule" data-x="2" data-y="1"></div>
+
+            <div class="cellule" data-x="0" data-y="2"></div>
+            <div class="cellule" data-x="1" data-y="2"></div>
+            <div class="cellule" data-x="2" data-y="2"></div>
+        </div>
+        <p id="image_pioche"></p>
+        <div class="inventaire">
+            <h3>Inventaire :</h3>
+            <p id="inv">
+                <img id="planche1" src="planche.png" draggable="true">
+                <img id="planche2" src="planche.png" draggable="true">
+                <img id="planche3" src="planche.png" draggable="true">
+                <img id="stick1" src="stick.png" draggable="true">
+                <img id="stick2" src="stick.png" draggable="true">
+            </p>
+
+        </div>
+
+        <script>
+
+            const objets = document.querySelectorAll('.inventaire img');
+            const cellules = document.querySelectorAll('.cellule');
+
+            // On définit le modèle théorique de la pioche (X, Y)
+            // 0 = Vide, 1 = Planche, 2 = Bâton
+            const modelePioche = [
+                ["planche", "planche", "planche"], // Ligne 0 
+                [0, "stick", 0],             // Ligne 1
+                [0, "stick", 0]              // Ligne 2 
+            ];
+
+            objets.forEach(objet => {
+                objet.addEventListener('dragstart', (e) => {
+                    e.dataTransfer.setData('text/plain', objet.id);
+                });
+            });
+
+            cellules.forEach(cellule => {
+
+                cellule.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                });
+
+                cellule.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    const id = e.dataTransfer.getData('text/plain');
+                    const objet = document.getElementById(id);
+
+                    cellule.appendChild(objet);
+
+                    if (verifierRecette()) {
+                        alert("🎉 Bravo ! Tu as crafté une pioche en bois !");
+                        document.getElementById("image_pioche").innerHTML='<img src="end 1.jpg" alt="">';
+                    }
+                });
+
+            });
+
+            function verifierRecette() {
+                let gagne = true;
+                cellules.forEach(cellule => {
+                    const x = parseInt(cellule.dataset.x);
+                    const y = parseInt(cellule.dataset.y);
+                    const imageDansCellule = cellule.querySelector('img');
+                    const attendu = modelePioche[y][x];
+
+                    if (attendu === 0) {
+                        // La case doit être vide
+                        if (imageDansCellule) gagne = false;
+                    } else {
+                        // La case doit contenir l'objet attendu
+                        if (!imageDansCellule || !imageDansCellule.src.includes(attendu)) {
+                            gagne = false;
+                        }
+                    }
+                });
+
+                return gagne;
+            }
+        </script>
+
+</body>
+
+</html>

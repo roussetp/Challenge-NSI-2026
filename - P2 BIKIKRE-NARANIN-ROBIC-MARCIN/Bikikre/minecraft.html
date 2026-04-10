@@ -1,0 +1,156 @@
+<!--20-/20 Excellent travail-->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Minecraft - Site de présentation</title>
+    <link rel="stylesheet" href="Minecraft.css">
+</head>
+
+<body>
+    <header>
+        <img src="title.jpg" alt="Minecraft" width="50%">
+    </header>
+    <div class="conteneur-principal">
+        <img src="alex.png" class="image-cote gauche">
+        <div class="contenu">
+            <nav><a href="../Robic/Projet web.html">Modes de jeu</a><a href="../Naranin/carft.html">Les crafts</a><a
+                    href="../Marcin/Quizz.html">Les biomes</a></nav>
+            <h1>Bienvenue sur le site dédié à Minecraft</h1>
+
+            <p>
+                Minecraft est un jeu vidéo de type bac à sable créé en 2009. Il permet aux joueurs
+                d’évoluer dans un monde entièrement composé de blocs. Ce jeu est connu dans le monde
+                entier et est apprécié par des joueurs de tous les âges grâce à sa simplicité et
+                à sa grande liberté.
+            </p>
+
+            <h2>Un monde vaste et varié</h2>
+
+            <p>
+                Le monde de Minecraft est généré de manière aléatoire, ce qui signifie que chaque
+                partie est différente. Les joueurs peuvent explorer de nombreux paysages comme
+                des forêts, des plaines, des montagnes, des déserts, des océans et des grottes.
+                Il est également possible de trouver des villages, des temples et d’autres
+                structures mystérieuses.
+            </p>
+
+            <h2>La collecte des ressources</h2>
+
+            <p>
+                Dans Minecraft, il est nécessaire de récolter des ressources pour progresser.
+                Les joueurs peuvent couper du bois, miner de la pierre et chercher des minerais
+                comme le fer, l’or ou le diamant. Ces ressources servent à fabriquer des outils,
+                des armes et des objets utiles pour l’aventure.
+            </p>
+
+            <h2>La construction et la créativité</h2>
+
+            <p>
+                La construction est l’un des aspects les plus importants de Minecraft. Les joueurs
+                peuvent construire des maisons, des châteaux, des ponts ou même des villes entières.
+                Chaque bloc peut être placé ou détruit, ce qui permet de créer presque tout ce que
+                l’on imagine. Certains joueurs recréent même des monuments célèbres ou inventent
+                leurs propres univers.
+            </p>
+
+            <h2>Les modes de jeu</h2>
+
+            <p>
+                Minecraft propose plusieurs modes de jeu. Le mode Survie oblige le joueur à gérer
+                sa vie et sa nourriture tout en se défendant contre des monstres comme les zombies,
+                les squelettes ou les creepers. Le mode Créatif permet de construire librement avec
+                un nombre illimité de blocs, sans danger.
+            </p>
+
+            <h2>Les dimensions et l’aventure</h2>
+
+            <p>
+                En plus du monde principal, Minecraft propose d’autres dimensions. Le Nether est
+                un monde dangereux rempli de lave et de créatures hostiles. L’End est une dimension
+                spéciale où se trouve le dragon de l’End, le boss final du jeu.
+            </p>
+
+            <h2>Le mode multijoueur et l’éducation</h2>
+
+            <p>
+                Minecraft peut être joué seul ou à plusieurs grâce au mode multijoueur. Les joueurs
+                peuvent collaborer pour construire, explorer et survivre ensemble. Le jeu est aussi
+                utilisé dans le domaine de l’éducation, car il développe la créativité, la logique
+                et le travail en équipe.
+            </p>
+
+            <h3>
+                Minecraft est bien plus qu’un simple jeu vidéo. C’est un univers où chaque joueur
+                peut créer sa propre aventure et apprendre tout en s’amusant.
+            </h3>
+            <h2>Questionnaire sur Minecraft</h2>
+
+            <form id="quiz">
+                <p>1. En quelle année Minecraft a-t-il été créé ?</p>
+                <input type="radio" name="q1" value="2009"> 2009<br>
+                <input type="radio" name="q1" value="2015"> 2015<br>
+                <input type="radio" name="q1" value="1985"> 1985<br>
+
+                <p>2. Quel mode permet de construire sans limites ?</p>
+                <input type="radio" name="q2" value="survie"> Mode Survie<br>
+                <input type="radio" name="q2" value="creatif"> Mode Créatif<br>
+                <input type="radio" name="q2" value="aventure"> Mode Aventure<br>
+
+
+                <p>3. Comment s’appelle le boss final du jeu ?</p>
+                <input type="radio" name="q3" value="dragon"> Dragon de l’End<br>
+                <input type="radio" name="q3" value="wither"> Wither<br>
+                <input type="radio" name="q3" value="warden"> Warden<br>
+
+                <p>4. Quelle ressource est la plus rare parmi celles-ci ?</p>
+                <input type="radio" name="q4" value="diamant"> Diamant<br>
+                <input type="radio" name="q4" value="fer"> Fer<br>
+                <input type="radio" name="q4" value="émeraude"> Emeraude<br>
+                <input type="radio" name="q4" value="or"> Or<br>
+
+
+                <p>5. Dans quelle dimension se trouve le Dragon de l’End ?</p>
+                <input type="radio" name="q5" value="nether"> Le Nether<br>
+                <input type="radio" name="q5" value="overworld"> L'Overworld<br>
+                <input type="radio" name="q5" value="end"> L’End<br>
+
+                <br>
+                <button type="button" onclick="corriger()">Valider le questionnaire</button>
+            </form>
+
+            <p id="resultat"></p>
+</body>
+<script>
+    function corriger() {
+        let score = 0;
+
+        let q1 = document.querySelector('input[name="q1"]:checked');
+        let q2 = document.querySelector('input[name="q2"]:checked');
+        let q3 = document.querySelector('input[name="q3"]:checked');
+        let q4 = document.querySelector('input[name="q4"]:checked');
+        let q5 = document.querySelector('input[name="q5"]:checked');
+
+        if (!q1 || !q2 || !q3 || !q4 || !q5) {
+            alert("Merci de répondre à toutes les questions !");
+            return;
+        }
+
+        if (q1.value === "2009") score++;
+        if (q2.value === "creatif") score++;
+        if (q3.value === "dragon") score++;
+        if (q4.value === "émeraude") score++;
+        if (q5.value === "end") score++;
+
+        document.getElementById("resultat").textContent =
+            "Ton score est de " + score + " / 5";
+    }
+
+</script>
+</div>
+<img src="steve.png" class="image-cote droite">
+</div>
+
+
+</html>

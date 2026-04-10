@@ -1,0 +1,216 @@
+<!--Bien mais on pouvait s'attendre à plus en partant d'un existant-->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>L'histoire de la Guadeloupe</title>
+
+    <style>
+        body {
+            background-image: url('Gwada.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navigation stylisée */
+        nav {
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 10px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            color: #6a0dad; /* violet */
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0 20px;
+            font-size: 16px;
+            padding: 6px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #eae6fa;
+            color: #9400d3;
+        }
+
+        /* Boîte quiz */
+        .quiz {
+            background-color: rgba(0, 0, 0, 0.6);
+            width: 60%;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .question {
+            margin-bottom: 20px;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            width: 100%;
+            max-width: 400px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #6a0dad; /* violet uniforme */
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            background-color: #9400d3;
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        #resultat {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 1px 1px 2px black;
+        }
+
+        h2, h3, h4 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="../JF/présentation.html">Géographie</a>
+        <a href="../MARTIAL/Guide interactif.html">Guide interactif</a>
+        <a href="../ROUET/geoguesser sur la GP.html">Geoguesser sur la Guadeloupe</a>
+        <a href="../MARTIAL/jeu interactif.html">jeu interactif</a>
+    </nav>
+
+    <div class="quiz">
+        <h1>Histoire de la Guadeloupe</h1>
+
+        <h2>
+            Située dans la mer des Caraïbes, la Guadeloupe est un archipel français réputé pour la richesse de ses paysages naturels et pour son histoire marquée par de nombreux peuples et cultures.
+            Formée principalement de deux îles : Basse-Terre et Grande-Terre, elle offre une grande diversité de décors naturels. Basse-Terre est connue pour ses montagnes volcaniques, sa forêt tropicale dense et le volcan actif La Soufrière, tandis que Grande-Terre se distingue par ses plages de sable blanc, ses lagons turquoise et ses falaises calcaires.
+            Cette diversité de paysages fait de la Guadeloupe un territoire exceptionnel où la nature occupe une place centrale. La Guadeloupe est un archipel des Petites Antilles. Avant l’arrivée des Européens, elle était peuplée par les Arawaks puis par les Caraïbes.
+            En 1493, lors de son deuxième voyage, Christophe Colomb arrive sur l’île et lui donne le nom de « Santa María de Guadalupe ». La colonisation française commence en 1635, marquant le début d’une transformation économique et sociale profonde.
+            Au XVIIᵉ et XVIIIᵉ siècles, l’économie repose principalement sur la culture de la canne à sucre. Ce système fonctionne grâce à l’esclavage des Africains déportés.
+            En 1794, la Révolution française entraîne une première abolition de l’esclavage. Cependant, Napoléon Bonaparte le rétablit en 1802. L’abolition définitive est proclamée en 1848.
+            En 1946, la Guadeloupe devient un département d’outre-mer français, marquant une nouvelle étape dans son histoire politique.
+        </h2>
+
+        <h3>Quiz sur l'histoire de la Guadeloupe</h3>
+        <h4>Les réponses se trouvent dans le texte 😉 (attention, l'orthographe compte!)</h4>
+
+        <div class="question">
+            <p>1. Quels peuples occupaient la Guadeloupe avant l’arrivée des Européens ?</p>
+            <input type="text" id="q1">
+        </div>
+
+        <div class="question">
+            <p>2. En quelle année Christophe Colomb arrive-t-il en Guadeloupe ?</p>
+            <input type="text" id="q2">
+        </div>
+
+        <div class="question">
+            <p>3. Quel nom Christophe Colomb donne-t-il à l’île en 1493 ?</p>
+            <input type="text" id="q3">
+        </div>
+
+        <div class="question">
+            <p>4. En quelle année débute la colonisation française en Guadeloupe ?</p>
+            <input type="text" id="q4">
+        </div>
+
+        <div class="question">
+            <p>5. Quelle culture agricole domine l’économie aux XVIIᵉ et XVIIIᵉ siècles ?</p>
+            <input type="text" id="q5">
+        </div>
+
+        <div class="question">
+            <p>6. En quelle année a lieu la première abolition de l’esclavage en Guadeloupe ?</p>
+            <input type="text" id="q6">
+        </div>
+
+        <div class="question">
+            <p>7. Quel dirigeant français rétablit l’esclavage en 1802 ?</p>
+            <input type="text" id="q7">
+        </div>
+
+        <div class="question">
+            <p>8. En quelle année l’esclavage est-il définitivement aboli ?</p>
+            <input type="text" id="q8">
+        </div>
+
+        <div class="question">
+            <p>9. En quelle année la Guadeloupe devient-elle un département d’outre-mer français ?</p>
+            <input type="text" id="q9">
+        </div>
+
+        <button onclick="verifier()">Valider</button>
+
+        <div id="resultat"></div>
+    </div>
+
+    <script>
+        function verifier() {
+            let score = 0;
+
+            let q1 = document.getElementById("q1").value.toLowerCase();
+            let q2 = document.getElementById("q2").value.toLowerCase();
+            let q3 = document.getElementById("q3").value.toLowerCase();
+            let q4 = document.getElementById("q4").value.toLowerCase();
+            let q5 = document.getElementById("q5").value.toLowerCase();
+            let q6 = document.getElementById("q6").value.toLowerCase();
+            let q7 = document.getElementById("q7").value.toLowerCase();
+            let q8 = document.getElementById("q8").value.toLowerCase();
+            let q9 = document.getElementById("q9").value.toLowerCase();
+
+            if (q1.includes("les arawaks puis les caraïbes")) score++;
+            if (q2.includes("1493")) score++;
+            if (q3.includes("santa maría de guadalupe")) score++;
+            if (q4.includes("1635")) score++;
+            if (q5.includes("la canne à sucre")) score++;
+            if (q6.includes("1794")) score++;
+            if (q7.includes("napoléon bonaparte")) score++;
+            if (q8.includes("1848")) score++;
+            if (q9.includes("1946")) score++;
+
+            document.getElementById("resultat").innerHTML =
+                "Votre score est de " + score + " / 9";
+
+            if(score === 9){
+                document.getElementById("resultat").innerHTML += " 🔥 Score parfait !";
+            }
+        }
+        </script>
+
+        </body>
+        </html>

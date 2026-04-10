@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="Minecraft craft.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+    <a href="../Naranin/html.html"></a>
+    <header>
+        <img src="title.jpg" alt="Minecraft" width="50%">
+    </header>
+    <nav><a href="../Robic/Projet web.html">Modes de jeu</a><a href="../Bikikre/minecraft.html">Page d'acceuil</a><a
+            href="../Marcin/Quizz.html">Les biomes</a></nav>
+    <h1>Bienvenue dans l’univers de Minecraft</h1>
+    <p>Dans Minecraft il faut savoir se faire ses premiers outils!!
+        Sa tombe bien tu est sur le meilleur tuto de ton lycée! Dans un premiers temps une courte introduction de mc:
+    </p>
+    <br>
+    <p>Dans Minecraft, le craft est une mécanique essentielle qui permet de transformer des ressources brutes en objets
+        utiles. En combinant différents matériaux dans une table de craft, le joueur peut créer des outils, des armes,
+        des blocs ou encore des armures. Le craft est indispensable pour progresser dans le jeu, survivre, construire et
+        explorer le monde. Apprendre à crafter, c’est donc apprendre à utiliser intelligemment les ressources
+        disponibles pour évoluer dans l’aventure.</p>
+    <br>
+    <h2>Voici un inventaire:</h2>
+
+    <img src="invent et table de craft.jpg" title="inventaire joueur" />
+    <p>Ce qui est entouré en blue c'est l'inventaire et en rouge la table de craft</p>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <link rel="stylesheet" href="Minecraft craft.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            .grille {
+                display: grid;
+                grid-template-columns: repeat(3, 100px);
+                grid-template-rows: repeat(3, 100px);
+                gap: 5px;
+                margin: 20px auto;
+                width: max-content;
+            }
+
+            .cellule {
+                border: 2px solid black;
+                background-color: #c6c6c6;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .objet {
+                width: 80px;
+                cursor: grab;
+            }
+
+            .inventaire {
+                margin-top: 20px;
+                text-align: center;
+            }
+
+            .inventaire img {
+                width: 80px;
+                margin: 10px;
+                cursor: grab;
+            }
+
+            #inv {
+                text-align: center;
+            }
+        </style>
+
+        <p>Essayons maintenant de crafter un outil !</p>
+
+        <h2>🛠️ Mini-jeu : Fais la bonne recette !</h2>
+
+        <h3>Choisis un outil :</h3>
+
+        <button onclick="choisirOutil('pioche_bois')">Pioche en bois</button>
+        <button onclick="choisirOutil('pioche_pierre')">Pioche en pierre</button>
+        <button onclick="choisirOutil('hache_bois')">Hache en bois</button>
+        <button onclick="choisirOutil('hache_pierre')">Hache en pierre</button>
+
+        <p id="choix">Tu dois crafter une pioche en bois</p>
+
+        <script>
+
+            const objets = document.querySelectorAll('.inventaire img')
+            const cellules = document.querySelectorAll('.cellule')
+
+            let outil = "pioche_bois"
+
+            function choisirOutil(type) {
+
+                outil = type
+
+                document.getElementById("image_outil").innerHTML = ""
+
+                if (type == "pioche_bois") document.getElementById("choix").innerText = "Craft une pioche en bois"
+                if (type == "pioche_pierre") document.getElementById("choix").innerText = "Craft une pioche en pierre"
+                if (type == "pioche_fer") document.getElementById("choix").innerText = "Craft une pioche en fer"
+                if (type == "pioche_diamond") document.getElementById("choix").innerText = "Craft une pioche en diamond"
+                if (type == "hache_bois") document.getElementById("choix").innerText = "Craft une hache en bois"
+                if (type == "hache_pierre") document.getElementById("choix").innerText = "Craft une hache en pierre"
+                if (type == "hache_fer") document.getElementById("choix").innerText = "Craft une hache en fer"
+                if (type == "hache_diamond") document.getElementById("choix").innerText = "Craft une hache en diamond"
+
+            }
+
+            function obtenirModele() {
+
+                if (outil == "pioche_bois")
+                    return [[
+                        ["planche", "planche", "planche"],
+                        [0, "stick", 0],
+                        [0, "stick", 0]
+                    ]]
+
+                if (outil == "pioche_pierre")
+                    return [[
+                        ["Cobblestone", "Cobblestone", "Cobblestone"],
+                        [0, "stick", 0],
+                        [0, "stick", 0]
+                    ]]
+
+                if (outil == "pioche_fer")
+                    return [[
+                        ["Iron", "Iron", "Iron"],
+                        [0, "stick", 0],
+                        [0, "stick", 0]
+                    ]]
+
+                if (outil == "pioche_diamond")
+                    return [[
+                        ["Diamond", "Diamond", "Diamond"],
+                        [0, "stick", 0],
+                        [0, "stick", 0]
+                    ]]
+
+                if (outil == "hache_bois")
+                    return [
+
+                        [
+                            ["planche", "planche", 0],
+                            ["planche", "stick", 0],
+                            [0, "stick", 0]
+                        ],
+
+                        [
+                            [0, "planche", "planche"],
+                            [0, "stick", "planche"],
+                            [0, "stick", 0]
+                        ]
+
+                    ]
+
+                if (outil == "hache_pierre")
+                    return [
+
+                        [
+                            ["Cobblestone", "Cobblestone", 0],
+                            ["Cobblestone", "stick", 0],
+                            [0, "stick", 0]
+                        ],
+
+                        [
+                            [0, "Cobblestone", "Cobblestone"],
+                            [0, "stick", "Cobblestone"],
+                            [0, "stick", 0]
+                        ]
+
+                    ]
+
+                if (outil == "hache_fer")
+                    return [
+
+                        [
+                            ["Iron", "Iron", 0],
+                            ["Iron", "stick", 0],
+                            [0, "stick", 0]
+                        ],
+
+                        [
+                            [0, "Iron", "Iron"],
+                            [0, "stick", "Iron"],
+                            [0, "stick", 0]
+                        ]
+
+                    ]
+
+                if (outil == "hache_diamond")
+                    return [
+
+                        [
+                            ["Diamond", "Diamond", 0],
+                            ["Diamond", "stick", 0],
+                            [0, "stick", 0]
+                        ],
+
+                        [
+                            [0, "Diamond", "Diamond"],
+                            [0, "stick", "Diamond"],
+                            [0, "stick", 0]
+                        ]
+
+                    ]
+
+            }
+
+            objets.forEach(objet => {
+                objet.addEventListener("dragstart", e => {
+                    e.dataTransfer.setData("text/plain", objet.id)
+                })
+            })
+
+            cellules.forEach(cellule => {
+
+                cellule.addEventListener("dragover", e => {
+                    e.preventDefault()
+                })
+
+                cellule.addEventListener("drop", e => {
+
+                    e.preventDefault()
+
+                    const id = e.dataTransfer.getData("text/plain")
+                    const objet = document.getElementById(id)
+
+                    cellule.appendChild(objet)
+
+                    if (verifierRecette()) {
+
+                        alert("🎉 Bravo ! Craft réussi !")
+
+                        if (outil == "pioche_bois")
+                            document.getElementById("image_outil").innerHTML = '<img src="Wooden_Pickaxe.png">'
+
+                        if (outil == "pioche_pierre")
+                            document.getElementById("image_outil").innerHTML = '<img src="Stone_Pickaxe.png">'
+
+                        if (outil == "pioche_fer")
+                            document.getElementById("image_outil").innerHTML = '<img src="Iron_Pickaxe.png">'
+
+                        if (outil == "pioche_diamond")
+                            document.getElementById("image_outil").innerHTML = '<img src="Diamond_Pickaxe.png">'
+
+                        if (outil == "hache_bois")
+                            document.getElementById("image_outil").innerHTML = '<img src="Wooden_Axe.png">'
+
+                        if (outil == "hache_pierre")
+                            document.getElementById("image_outil").innerHTML = '<img src="Stone_Axe.png">'
+
+                        if (outil == "hache_fer")
+                            document.getElementById("image_outil").innerHTML = '<img src="Iron_Axe.png">'
+
+                        if (outil == "hache_diamond")
+                            document.getElementById("image_outil").innerHTML = '<img src="Diamond_Axe.png">'
+
+                    }
+
+                })
+
+            })
+
+            function verifierRecette() {
+
+                const modeles = obtenirModele()
+
+                for (let modele of modeles) {
+
+                    let gagne = true
+
+                    cellules.forEach(cellule => {
+
+                        const x = parseInt(cellule.dataset.x)
+                        const y = parseInt(cellule.dataset.y)
+
+                        const image = cellule.querySelector("img")
+                        const attendu = modele[y][x]
+
+                        if (attendu == 0) {
+
+                            if (image) gagne = false
+
+                        } else {
+
+                            if (!image || !image.src.includes(attendu)) gagne = false
+
+                        }
+
+                    })
+
+                    if (gagne) return true
+
+                }
+
+                return false
+
+            }
+
+        </script>
+</body>
+
+</html>

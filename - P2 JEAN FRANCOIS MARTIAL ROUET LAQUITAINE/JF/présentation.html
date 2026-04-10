@@ -1,0 +1,207 @@
+<!--17/20 Manque d'investissement dans le jeu-->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>La Guadeloupe</title>
+    <style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #eef2f3;
+    margin: 0;
+  }
+  header {
+    background-color: #00796b;
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
+  main {
+    width: 90%;
+    max-width: 900px;
+    margin: auto;
+  }
+  section {
+    background-color: white;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+  }
+  h2 {
+    color: #00796b;
+  }
+  .images {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  .images img {
+    width: 250px;
+    height: 160px;
+    margin: 10px;
+    border-radius: 5px;
+  }
+  footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+  }
+
+  /* Ajouté ici, avant la fin */
+  nav {
+    background-color: #f0f0f0;
+    padding: 12px 0;
+    text-align: center;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  nav a {
+    color: #6a0dad; /* violet */
+    text-decoration: none;
+    font-weight: 600;
+    margin: 0 20px;
+    font-size: 18px;
+    transition: color 0.3s ease;
+    padding: 6px 12px;
+    border-radius: 4px;
+  }
+
+  nav a:hover {
+    color: #9400d3;
+    background-color: #eae6fa;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  #memories table {
+    margin: 20px auto;
+    border-collapse: separate;
+    border-spacing: 10px;
+  }
+
+  #memories td {
+    width: 150px;
+    height: 150px;
+    border: 2px solid #6a0dad;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: #fafafa;
+    box-shadow: 0 2px 5px rgba(106, 13, 173, 0.3);
+    transition: transform 0.2s ease;
+  }
+
+  #memories td:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(106, 13, 173, 0.6);
+  }
+
+  #memories img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+</style>
+</head>
+
+<body>
+    <nav>
+        <a href="../ROUET/geoguesser sur la GP.html">Geoguesser sur la Guadeloupe</a>
+        <a href="../MARTIAL/Guide interactif.html">Guide interactif</a>
+        <a href="../LAQUITAINE/Quiz sur la Guadeloupe.html">Quiz sur la Guadeloupe</a>
+        <a href="../MARTIAL/jeu interactif.html">jeu interactif</a>
+    </nav>
+
+    <header>
+        <h1>La Guadeloupe</h1>
+        <p>Un archipel français des Caraïbes</p>
+    </header>
+
+    <main>
+
+        <section>
+            <h2>Présentation de la Guadeloupe</h2>
+            <p>
+                La Guadeloupe est une région et un département d’outre-mer français situé dans la mer des Caraïbes.
+                Son histoire est marquée par la colonisation européenne et l’esclavage, ce qui a contribué à une
+                culture riche et métissée.
+            </p>
+            <p>
+                L’archipel est composé de plusieurs îles, dont les principales sont Basse-Terre et Grande-Terre.
+                On y trouve aussi Marie-Galante, Les Saintes et La Désirade.
+            </p>
+            <p>
+                La population est d’environ 400 000 habitants. La culture guadeloupéenne se retrouve dans la musique,
+                la danse, la gastronomie créole et les traditions locales.
+            </p>
+        </section>
+
+        <section>
+            <h2>Les paysages</h2>
+            <div class="images">
+                <img src="plage.jpg" alt="Plage">
+                <img src="souffriere.jpg" alt="Volcan">
+                <img src="foret.jpg" alt="Forêt">
+            </div>
+            <p>
+                La Guadeloupe possède des paysages variés : des plages de sable fin, le volcan de la Soufrière,
+                ainsi que de vastes forêts tropicales.
+            </p>
+        </section>
+        <img src="" alt="">
+        <section id="memories">
+            <table border="1">
+                <tr>
+                    <td id="1" onclick="cellCliquee(this)"><img src="dos.jpg" alt=""></td>
+                    <td onclick="cellCliquee(this)"><img src="dos.jpg" alt=""></td>
+                </tr>
+                <tr>
+                    <td onclick="cellCliquee(this)"><img src="dos.jpg" alt=""></td>
+                    <td onclick="cellCliquee(this)"><img src="dos.jpg" alt=""></td>
+                </tr>
+            </table>
+        </section>
+
+
+    </main>
+
+    <footer>
+        <p>© 2026 - Projet scolaire HTML / CSS</p>
+    </footer>
+
+</body>
+<script>
+    //document.getElementById("1").innerHTML='<img src="plage1.jpg" alt="">'
+    var tableau_images = [['<img src="carte.jpg" alt="">', '<img src="carnaval.jpg" alt="">'], ['<img src="carte.jpg" alt="">', '<img src="carnaval.jpg" alt="">']]
+    var nb_clic = 0
+    var premiere_cellule = []
+    function cellCliquee(cellule) {
+        nb_clic++
+
+        const ligne = cellule.parentElement.rowIndex;
+        const colonne = cellule.cellIndex;
+        alert("Tu as cliqué sur : photo 1" + ligne + colonne);
+        if (nb_clic == 1) {
+            //cellule.style.backgroundColor = "yellow";
+            cellule.innerHTML = tableau_images[ligne][colonne];
+            premiere_cellule.push(ligne)
+            premiere_cellule.push(colonne)
+        }
+        if (nb_clic == 2){
+                if (tableau_images[ligne][colonne] == tableau_images[premiere_cellule[ligne]][premiere_cellule[colonne]]) 
+                {
+                 alert("Bonne réponse !")
+                }
+
+        }
+
+    }
+
+</script>
+
+</html>

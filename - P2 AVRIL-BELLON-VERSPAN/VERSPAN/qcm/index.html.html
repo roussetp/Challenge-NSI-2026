@@ -1,0 +1,310 @@
+<!--16/20 *Bon résultats. Manque les liens. Des erreurs. De l'IA et manque de constance dans le travail-->
+<<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>QCM - Patrimoine et Culture de la Guadeloupe</title>
+
+<style>
+body{
+  font-family: Arial;
+  background: linear-gradient(135deg,#00c6ff,#00ff94,#ffe066);
+  margin:0;
+  text-align:center;
+}
+
+header{
+  background:#008080;
+  color:white;
+  padding:20px;
+  font-size:28px;
+}
+
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:20px;
+}
+
+/* Style du texte d’introduction */
+.intro{
+  background:#fff8dc; /* beige clair tropical */
+  padding:20px;
+  border-radius:12px;
+  margin-bottom:25px;
+  box-shadow:0 0 10px rgba(0,0,0,0.2);
+  text-align:left;
+  color:#004d40;
+  font-size:16px;
+  line-height:1.6;
+}
+
+.question{
+  background:white;
+  margin:15px 0;
+  padding:15px;
+  border-radius:12px;
+  box-shadow:0 0 10px rgba(0,0,0,0.2);
+  text-align:left;
+}
+
+.correct{color:green;font-weight:bold;}
+.wrong{color:red;font-weight:bold;}
+
+button{
+  background:#ff7f50;
+  color:white;
+  border:none;
+  padding:15px 25px;
+  font-size:18px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#ff5722;
+}
+
+.result{
+  font-size:22px;
+  margin-top:20px;
+  font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>🌴 QCM : Le patrimoine et la culture de la Guadeloupe 🌺</header>
+
+<div class="container">
+
+<div class="intro">
+<h2>Découvre la Guadeloupe !</h2>
+<p>
+La Guadeloupe est un archipel situé dans les Caraïbes et fait partie des territoires français.
+Son patrimoine culturel est riche et varié. Le gwoka est une musique et une danse
+traditionnelles reconnues par l’UNESCO. Le célèbre volcan de l'île est la Soufrière.
+La culture guadeloupéenne est aussi connue pour sa gastronomie comme les accras,
+le colombo ou encore le rhum produit à partir de la canne à sucre.
+Le carnaval est une fête populaire importante qui se déroule au début de l'année.
+L'histoire de la Guadeloupe est marquée par l'esclavage et son abolition en 1848.
+On y trouve également des paysages naturels célèbres comme les chutes du Carbet
+et de nombreuses plages touristiques.
+</p>
+</div>
+
+<form id="quiz">
+
+<!-- Questions 1 à 20 -->
+
+<div class="question" id="question1">
+1. La Guadeloupe est :<br>
+<label><input type="radio" name="q1" value="1"> Une île des Caraïbes</label><br>
+<label><input type="radio" name="q1" value="0"> Une île du Pacifique</label>
+<div class="feedback"></div>
+</div>
+
+<div class="question" id="question2">
+2. Le gwoka est : (2 réponses possibles)<br>
+<label><input type="checkbox" name="q2" value="0"> Un sport </label><br>
+<label><input type="checkbox" name="q2" value="1"> Une danse</label><br>
+<label><input type="checkbox" name="q2" value="1"> Une musique traditionelle </label>
+<div class="feedback"></div>
+</div>
+
+<div class="question" id="question3">
+3. Le volcan de la Guadeloupe s'appelle :<br>
+<label><input type="radio" name="q3" value="1"> La Soufrière</label><br>
+<label><input type="radio" name="q3" value="0"> Le Mont Blanc</label>
+<div class="feedback"></div>
+</div>
+
+<div class="question" id="question4">
+4. Les accras sont :<br>
+<label><input type="radio" name="q4" value="1"> Des beignets de morue</label><br>
+<label><input type="radio" name="q4" value="0"> Une soupe</label>
+<div class="feedback"></div>
+</div>
+
+<div class="question" id="question5">
+5. La cuisine créole est : (2 réponses possibles)<br>
+<label><input type="checkbox" name="q5" value="1"> Épicée</label><br>
+<label><input type="checkbox" name="q5" value="1"> Variée</label><br>
+<label><input type="checkbox" name="q5" value="0"> Sans goût</label>
+<div class="feedback"></div>
+</div>
+
+<div class="question" id="question6">
+6. Le carnaval de Guadeloupe se déroule :<br>
+<label><input type="radio" name="q6" value="1"> En Janvier/Fevrier</label><br>
+<label><input type="radio" name="q6" value="0"> En Aril/Mai</label>
+<div class="feedback"></div>
+</div>
+
+<div class="question" id="question7">
+7. Les chutes du Carbet sont :<br>
+<label><input type="radio" name="q7" value="0"> Une plage célèbre</label><br>
+<label><input type="radio" name="q7" value="1"> Une cascade célèbre </label>
+<div class="feedback"></div>
+</div>
+
+<div class="question" id="question8">
+8. La Guadeloupe est composée de : (2 réponses possibles)<br>
+<label><input type="checkbox" name="q8" value="1"> Basse-Terre</label><br>
+<label><input type="checkbox" name="q8" value="0"> La Martinique</label><br>
+<label><input type="checkbox" name="q8" value="1"> Grande-Terre</label>
+<div class="feedback"></div>
+</div>
+
+<div class="question" id="question9">
+9. L'esclavage a été aboli en Guadeloupe en :<br>
+<label><input type="radio" name="q9" value="0"> 1750</label><br>
+<label><input type="radio" name="q9" value="1"> 1848</label>
+<div class="feedback"></div>
+</div>
+
+<div class="question" id="question10">
+10. Le colombo est :<br>
+<label><input type="radio" name="q10" value="1"> Un plat épicé</label><br>
+<label><input type="radio" name="q10" value="0"> Une danse traditionnelle</label>
+<div class="feedback"></div>
+</div>
+
+<div class="question" id="question11">
+11. Le rhum de Guadeloupe est produit à partir de :<br>
+<label><input type="radio" name="q11" value="1"> La canne à sucre</label><br>
+<label><input type="radio" name="q11" value="0"> Du raisin </label>
+<div class="feedback"></div>
+</div>
+
+<div class="question" id="question12">
+12. Le gwoka est inscrit au patrimoine immatériel de l'UNESCO :<br>
+<label><input type="radio" name="q12" value="0"> Non</label><br>
+<label><input type="radio" name="q12" value="1"> Oui</label>
+<div class="feedback"></div>
+</div>
+
+<div class="question" id="question13">
+13. Les plages guadeloupéennes sont : (2 réponses possibles)<br>
+<label><input type="checkbox" name="q13" value="1"> Sablonneuses</label><br>
+<label><input type="checkbox" name="q13" value="0"> Rocheuses</label><br>
+<label><input type="checkbox" name="q13" value="1"> Glacées</label>
+<div class="feedback"></div>
+</div>
+
+<div class="question" id="question14">
+14. La capitale de la Guadeloupe est :<br>
+<label><input type="radio" name="q14" value="1"> Basse-Terre</label><br>
+<label><input type="radio" name="q14" value="0"> Pointe-à-Pitre</label>
+<div class="feedback"></div>
+</div>
+
+<div class="question" id="question15">
+15. Le festival de musique traditionnelle en Guadeloupe est :<br>
+<label><input type="radio" name="q15" value="1"> Le festival de gwoka</label><br>
+<label><input type="radio" name="q15" value="0"> Le festival de jazz de Montreux</label>
+<div class="feedback"></div>
+</div>
+
+<div class="question" id="question16">
+16. La langue officielle de la Guadeloupe est :<br>
+<label><input type="radio" name="q16" value="0"> L'anglais</label><br>
+<label><input type="radio" name="q16" value="1"> Le Francais</label>
+<div class="feedback"></div>
+</div>
+
+<div class="question" id="question17">
+17. Le carnaval inclut : (2 réponses possibles)<br>
+<label><input type="checkbox" name="q17" value="1"> Des défilés colorés</label><br>
+<label><input type="checkbox" name="q17" value="1"> Des costumes traditionnels</label><br>
+<label><input type="checkbox" name="q17" value="0"> Des feux d'artifice </label>
+<div class="feedback"></div>
+</div>
+
+<div class="question" id="question18">
+18. Le climat de la Guadeloupe est :<br>
+<label><input type="radio" name="q18" value="1"> Tropical</label><br>
+<label><input type="radio" name="q18" value="0"> Continental</label>
+<div class="feedback"></div>
+</div>
+
+<div class="question" id="question19">
+19. La Guadeloupe fait partie :<br>
+<label><input type="radio" name="q19" value="1"> Des départements français d'outre-mer</label><br>
+<label><input type="radio" name="q19" value="0"> Des États indépendants</label>
+<div class="feedback"></div>
+</div>
+
+<div class="question" id="question20">
+20. Les paysages naturels de Guadeloupe incluent : (2 réponses possibles)<br>
+<label><input type="checkbox" name="q20" value="1"> La forêt tropicale</label><br>
+<label><input type="checkbox" name="q20" value="0"> Les montagnes enneigées</label><br>
+<label><input type="checkbox" name="q20" value="1"> Les Plages</label>
+<div class="feedback"></div>
+</div>
+
+<button type="button" onclick="corriger()">Valider</button>
+
+</form>
+
+<div class="result" id="resultat"></div>
+
+</div>
+
+<script>
+function corriger(){
+
+let score=0;
+
+for(let i=1;i<=20;i++){ // mis à jour pour 20 questions
+
+let inputs=document.querySelectorAll('input[name="q'+i+'"]');
+let checked=document.querySelectorAll('input[name="q'+i+'"]:checked');
+
+let bonnes=[];
+let bonnesChoisies=0;
+
+inputs.forEach(input=>{
+if(input.value=="1"){
+bonnes.push(input.parentElement.textContent.trim());
+}
+});
+
+checked.forEach(c=>{
+if(c.value=="1"){
+bonnesChoisies++;
+}
+});
+
+let feedback=document.querySelector("#question"+i+" .feedback");
+
+if(bonnesChoisies==bonnes.length && checked.length==bonnes.length){
+score++;
+feedback.innerHTML="<span class='correct'>✔ Bonne réponse</span>";
+}else{
+feedback.innerHTML="<span class='wrong'>❌ Mauvaise réponse<br>Bonne(s) réponse(s) : "+bonnes.join(", ")+"</span>";
+}
+
+}
+
+// Affichage du score et message personnalisé
+let message="";
+if(score<=5){
+  message="Viens decouvrir la Guadeloupe ! 🌴";
+}else if(score<=10){
+  message="Pas mal ! Tu connais un peu la Guadeloupe 😎";
+}else if(score<=15){
+  message="Bravo ! Tu connais bien la culture guadeloupéenne 🌺";
+}else{
+  message="Excellent ! Tu es un vrai expert de la Guadeloupe 🏝️";
+}
+
+document.getElementById("resultat").innerHTML="Score : "+score+"/20<br>"+message;
+
+}
+</script>
+
+</body>
+</html>
